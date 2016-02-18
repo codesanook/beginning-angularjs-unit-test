@@ -27,7 +27,7 @@ app.controller('weatherController', function ($scope, weatherService) {
 
     $scope.search = function (cityName) {
         var cityIndex = $scope.cityNames.indexOf(cityName.toLowerCase());
-        var city = weatherService.getWeathers()[cityIndex];
+        var city = $scope.cities[cityIndex];
         return city;
     };
 });
