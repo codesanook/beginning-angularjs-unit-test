@@ -1,6 +1,3 @@
-// Karma configuration
-// Generated on Sat Feb 13 2016 11:28:56 GMT+0700 (SE Asia Standard Time)
-
 module.exports = function(config) {
   config.set({
 
@@ -15,6 +12,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'lib/jquery-2.2.0.min.js',
       'lib/angular-1.5.0/angular.min.js',
       'lib/angular-1.5.0/angular-mocks.js',
       'src/**/*.js',
@@ -69,4 +67,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};
