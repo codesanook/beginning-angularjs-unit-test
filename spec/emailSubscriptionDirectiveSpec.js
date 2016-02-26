@@ -1,4 +1,4 @@
-describe("myDirective", function () {
+describe("emailSubscriptionDirective", function () {
 
     it('user click subscribe, then scope.hasSubscribed changed to true', function () {
 

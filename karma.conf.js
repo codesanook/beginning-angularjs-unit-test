@@ -1,70 +1,51 @@
-module.exports = function(config) {
-  config.set({
+module.exports = function (config) {
+    config.set({
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+        basePath: '',
+        frameworks: ['jasmine'],
 
+        files: [
+            'lib/jquery-2.2.0.min.js',
+            'lib/angular-1.5.0/angular.min.js',
+            'lib/angular-1.5.0/angular-mocks.js',
+            'src/**/*.js',
+            'spec/**/*.js',
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+            'src/**/*.html'
+        ],
 
+        exclude: [],
 
-    // list of files / patterns to load in the browser
-    files: [
-      'lib/jquery-2.2.0.min.js',
-      'lib/angular-1.5.0/angular.min.js',
-      'lib/angular-1.5.0/angular-mocks.js',
-      'src/**/*.js',
-      'spec/**/*.js'
-    ],
+        preprocessors: {
+            'src/**/*.html': ['ng-html2js']
+        },
 
+        ngHtml2JsPreprocessor: {
+            cacheIdFromPath: function (filePath) {
 
-    // list of files to exclude
-    exclude: [
-    ],
+                console.log("filePath " + filePath);
+                var cacheId = filePath.replace("src/", "");
 
+                console.log("cacheId " + cacheId);
+                return cacheId;
+            },
+            moduleName: 'ngTemplates'
+        },
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
+        reporters: ['progress'],
 
+        port: 9876,
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+        colors: true,
 
+        logLevel: config.LOG_INFO,
 
-    // web server port
-    port: 9876,
+        autoWatch: true,
 
+        browsers: ['PhantomJS'],
 
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
+        singleRun: false,
 
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
+        concurrency: Infinity
+    })
 };
